@@ -1,0 +1,10 @@
+.landpage-image{
+      height: 55%;
+}
+
+.landpage-image{
+    background-image: url(home/vinitas/Desktop/new1/src/v.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
