@@ -1,56 +1,88 @@
-import React from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import React,{Component} from 'react';
+import { Form,Button,Segment,Grid,Image,Advertisement,Rating,Card, Feed} from 'semantic-ui-react'
+ 
+ class Login extends React.Component {
+  state={
+    data: {
+      password: '',
+      password: ''
+    },
+    loading: false,
+    errors: {}
+  }
+  onChange = e =>
+  this.setState({
+    data: {...this.state.data, [e.target.name]: e.target.value }
+  })
 
 
-const LoginForm = () => (
-  <div className='login-form'>
-    {/*
-      Heads up! The styles below are necessary for the correct render of this example.
-      You can do same with CSS, the main idea is that all the elements up to the `Grid`
-      below must have a height of 100%.
-    */}
-    <style>{`
-      body > div,
-      body > div > div,
-      body > div > div > div.login-form {
-        height: 100%;
-      }
-    `}</style>
-    <Grid
-      textAlign='center'
-      style={{ height: '100%' }}
-      verticalAlign='middle'
-    >
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2' color='teal' textAlign='center'>
-          <Image src='/logo.png' />
-          {' '}Log-in to your account
-        </Header>
-        <Form size='large'>
-          <Segment stacked>
-            <Form.Input
-              fluid
-              icon='user'
-              iconPosition='left'
-              placeholder='E-mail address'
-            />
-            <Form.Input
-              fluid
-              icon='lock'
-              iconPosition='left'
-              placeholder='Password'
-              type='password'
-            />
+  render(){
+    const {  data } = this.state;
 
-            <Button color='teal' fluid size='large'>Login</Button>
-          </Segment>
+    return(
+      <div><center><Image  src={require('/home/vinitas/Desktop/new1/src/v.jpg')}  
+        href= 'http://www.vinitas saloon and spa.com'
+        size='large'/> </center>
+       <Card>
+    <Card.Content>
+      <Card.Header>
+        Recent Activity
+      </Card.Header>
+    </Card.Content>
+    <Card.Content>
+      <Feed>
+        <Feed.Event>
+          <Feed.Label image='/home/vinitas/Desktop/new1/src/v.jpg' />
+          <Feed.Content>
+            <Feed.Date content='1 day ago' />
+            <Feed.Summary>
+              <a>Vinitas</a> You added <a>Madhavan Madhav</a> to your <a>coworker</a> group.
+            </Feed.Summary>
+          </Feed.Content>
+        </Feed.Event>
+      </Feed>
+       
+    </Card.Content>
+  </Card> 
+    
+        
+        
+
+
+
+       <Form >
+       <Segment inverted>
+      
+       <label htmlfor="email">Email</label>
+       <input 
+        type="email"
+        id="email"
+        name="email"
+        placeholder="example@example.com"
+        value={data.email}/>
+        <label htmlfor="password">Password</label>
+       <input 
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Make  it secure"
+        value={data.password}/>
+        
+        
+
+        <Button primary>Login</Button>
+        </Segment>
+
         </Form>
-        <Message>
-          New to us? <a href='#'>Sign Up</a>
-        </Message>
-      </Grid.Column>
-    </Grid>
-  </div>
-)
+        <Button circular color='facebook' icon='facebook' />
+    <Button circular color='twitter' icon='twitter' />
+    <Button circular color='linkedin' icon='linkedin' />
+    <Button circular color='google plus' icon='google plus' />  
 
-export default LoginForm
+       
+      </div>
+      )
+  }
+
+ } 
+ export default Login

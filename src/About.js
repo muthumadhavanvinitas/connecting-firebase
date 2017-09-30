@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 
 
-import { Button, Checkbox, Form,Image,Menu} from 'semantic-ui-react'
+import { Button,Checkbox, Form,Image,Menu,icon,Rating} from 'semantic-ui-react'
+ 
 import { Popup,Input, List,Step } from 'semantic-ui-react'
 import { Link } from  'react-router'
 import App from './App';
@@ -27,22 +28,23 @@ export default class About extends App {
 		const { activeItem } = this.state
 		return (
 
-          <div>
-           <Menu secondary>
-        <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
-        <Menu.Item name='messages' active={activeItem === 'messages'} onClick={this.handleItemClick} />
-        <Menu.Item name='friends' active={activeItem === 'friends'} onClick={this.handleItemClick} />
-        <Menu.Menu position='right'>
-          <Menu.Item>
+      <div>
+        <Menu secondary>
+         <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
+         <Menu.Item name='messages' active={activeItem === 'messages'} onClick={this.handleItemClick} />
+         <Menu.Item name='friends' active={activeItem === 'friends'} onClick={this.handleItemClick} />
+         <Menu.Menu position='right'>
+         <Menu.Item>
             <Input icon='search' placeholder='Search...' />
-          </Menu.Item>
-           <Link to="/login/"><Menu.Item name='Login' color='green'/></Link>
+         </Menu.Item>
+           <Link to="/login/"><Menu.Item name='Login' color='blue'/></Link>
         </Menu.Menu>
-      </Menu><h3><font color="green"><center><Image  src={require('/home/vinitas/Desktop/new1/src/v.jpg')}  
-        href= 'http://www.vinitas saloon and spa.com'
-        size='large'
+         </Menu><h3><font color="green"><center><Image  src={require('/home/vinitas/Desktop/new1/src/v.jpg')}  
+          href= 'http://www.vinitas saloon and spa.com'
+          size='large'/>
+           Rate vinitas!! <Rating icon='star' defaultRating={3} maxRating={5} />
     
-     /></center> </font></h3>
+     </center> </font></h3>
       <List>
     <List.Item>
       <List.Icon name='users' />

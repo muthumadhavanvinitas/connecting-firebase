@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Names from './Names';
- import { Button, Checkbox, Form,Segment } from 'semantic-ui-react'
+ import { Button, Checkbox, Form,Segment,Modal,Icon} from 'semantic-ui-react'
+
 import { Link } from  'react-router'
 import fire from './fire';
+
 
 class App extends Component {
  constructor(props) {
@@ -19,6 +21,11 @@ class App extends Component {
       this.setState({ messages: [message].concat(this.state.messages) });
     })
   }
+  handleSubmit(ev){
+    alert('Welcome');
+    ev.preventDefault(); 
+  }
+  
   addMessage(e){
     e.preventDefault(); 
     fire.database().ref('messages').push( this.inputEl.value );
@@ -31,7 +38,7 @@ class App extends Component {
       <div>
 
     <Segment inverted>
-    <Form onSubmit={this.addMessage.bind(this)}>
+    <Form>
       
         <Form.Input label='First name'  placeholder='First name' ref={ el => this.inputEl = el }/>
         <Form.Input label='Last name' placeholder='Last name'  ref={ el => this.inputEle = el }/>
@@ -39,6 +46,19 @@ class App extends Component {
   Hello there, this is some text in a text area
 </textarea>
          <Link to="/hello/"><Form.Button color='green' content="Submit"/></Link>
+
+ <Modal trigger={<Button color='green'>Save<Icon name='save' /></Button>} basic size='small'>
+ <Modal.Content>
+      <p>Your Details has been saved successfully</p>
+    </Modal.Content>
+     <Modal.Actions>
+      <Button basic color='green' onClick={this.handleSubmit}>
+        <Link to="/hello/"><Icon name='checkmark' /> Done</Link>
+      </Button>
+      
+    </Modal.Actions>
+  </Modal>
+         
         
       <Form.Checkbox label='I agree to the Terms and Conditions' />
        <ol>
@@ -50,6 +70,7 @@ class App extends Component {
         </ol>
         
     </Form>
+    
     </Segment>
     </div>
 
